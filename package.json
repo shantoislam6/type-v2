@@ -1,0 +1,11 @@
+{
+  "name": "type-v2",
+  "version": "1.0.0",
+  "description": "Simple Auto Type js",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "author": "Shanto",
+  "license": "MIT"
+}
