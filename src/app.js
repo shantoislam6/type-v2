@@ -1,4 +1,5 @@
 import {type} from './lib/type';
 
-const initType = type().init();
-
+document.addEventListener('DOMContentLoaded', function(){
+    const initType = type().init();
+});

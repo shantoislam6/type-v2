@@ -1,6 +1,6 @@
 import TypeWriter from './core/core';
 /*
- * Bootstrap Function
+ * Bootstrap
  * @ return intit method
 */
 export function type(){
@@ -11,7 +11,24 @@ export function type(){
                 const speed = element.getAttribute('data-type-speed');
                 const wait  = element.getAttribute('data-type-wait');
                 const words = JSON.parse(element.getAttribute('data-type-words'));
-                new TypeWriter(element, words, speed, wait);
+                const blink = eval(element.getAttribute('data-type-blink'));
+                const blinkSpeed = element.getAttribute('data-type-blink-speed');
+                const removeSpeed = element.getAttribute('data-remove-Speed');
+                const colors  = JSON.parse(element.getAttribute('data-type-colors'));
+                const fontWeight = element.getAttribute('data-type-font-weight');
+                const blinkText = element.getAttribute('data-blink-text');
+                new TypeWriter(
+                    element,
+                     words, 
+                     speed, 
+                     wait,
+                     blinkSpeed,
+                     blink,
+                    removeSpeed,
+                    colors,
+                    fontWeight,
+                    blinkText
+                );
             });
         }
     }
