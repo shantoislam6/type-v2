@@ -1,7 +1,7 @@
 import TypeWriter from './core/core';
-/*
- * Bootstrap
- * @ return intit method
+/**
+ * 
+ * @return intit method
 */
 export function type(){
     return {

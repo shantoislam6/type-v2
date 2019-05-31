@@ -62,45 +62,35 @@ export default class TypeWriter{
         }
 
         // add text element
-        this.element.innerHTML += `<span></span><span class="blink-animate">${this.blinkText != null ? this.blinkText : '|'}</span>`;
+        this.element.innerHTML += `<span class="type-text"></span><span class="blink-animate">${this.blinkText != null ? this.blinkText : '|'}</span>`;
 
         // start type
         this.type();
     }
     // type method
     type(){
-         
         // Set current word index 
          const currentW = this.wordIndex % this.words.length;
-
-
          if(Array.isArray(this.colors)){
              // Set current color index 
              const currentC = this.colorIndex % this.colors.length;
              // Get color
              this.color = this.colors[currentC];
          }
-
-
          // Get full text 
          const fullText = this.words[currentW];
-
-
          // check if deleting or adding 
         if( !this.isDeleting && this.letterIndex <= fullText.length){
             // add text
             this.text = fullText.substring(0, this.letterIndex);
             this.letterIndex++;
-
             // check if ready for remove text
             if(this.letterIndex > fullText.length - 1){
                 this.typeSpeed = this.removeSpeed;
-
                 // start blink animation
                 if(this.isBlinkAnimate){
                     this.element.children[2].style.animation = `blink ${ this.blinkSpeed / 1000}s infinite`;
                 }
-                
                 // wait for remove text
                 setTimeout(()=>{
 
@@ -114,13 +104,11 @@ export default class TypeWriter{
 
                 },this.wait);
             }
-            
         } else if ( this.isDeleting && this.letterIndex >= 0) {
-
             // remove text
             this.text = fullText.substring(0, this.letterIndex);
             this.letterIndex--;
-
+            
              // check if ready for add next word text
             if(this.letterIndex == 1){
                 this.letterIndex = 0;
@@ -130,14 +118,10 @@ export default class TypeWriter{
                 this.colorIndex++;
             }
         }
-
-
         // add text to element
         this.element.children[1].innerHTML = this.text;
- 
         // add color to element
         this.element.style.color = this.color;
-
         // Run type() method interval
         setTimeout(()=>this.type(), this.typeSpeed);
     }
