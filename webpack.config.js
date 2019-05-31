@@ -1,11 +1,29 @@
 const path = require("path");
 
 module.exports = {
-    entry: './src/app.js',
+    entry: {
+        type:'./src/type.js',
+    },
     output: {
-        filename: 'bundle.js',
+        filename: 'type.js',
         path: path.resolve(__dirname, 'dist/')
     },
+    module:{
+        rules:[
+            {
+                test:/.m?js$|.jsx$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                      presets: ['@babel/preset-env']
+                    }
+                }
+                    
+            }
+        ]
+    },
+    devtool: 'source-map',
     mode:'development',
     watch:true,
     watchOptions: {
@@ -14,3 +32,4 @@ module.exports = {
         poll: 1000
     }
 }
+
